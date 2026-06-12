@@ -48,35 +48,6 @@ This approach ensures that the stock is always bought before it is sold.
 
 ---
 
-## Solution
-
-```java
-class Solution {
-    public int maxProfit(int[] prices) {
-        int minPrice = prices[0];
-        int maxProfit = 0;
-
-        for(int i = 1; i < prices.length; i++) {
-
-            if(prices[i] < minPrice) {
-                minPrice = prices[i];
-            }
-
-            int currentPrice = prices[i];
-            int profit = currentPrice - minPrice;
-
-            if(profit > maxProfit) {
-                maxProfit = profit;
-            }
-        }
-
-        return maxProfit;
-    }
-}
-```
-
----
-
 ## Time Complexity
 
 ```text
