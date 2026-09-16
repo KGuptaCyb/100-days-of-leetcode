@@ -1,0 +1,24 @@
+class Solution {
+    public int numberOfSets(int n, int k) {
+        final int MOD = 1000000007;
+
+        long[][] dp = new long[k + 1][n];
+
+        for (int i = 0; i < n; i++) {
+            dp[0][i] = 1;
+        }
+
+        for (int segments = 1; segments <= k; segments++) {
+            long prefix = 0;
+
+            for (int i = 1; i < n; i++) {
+                prefix = (prefix + dp[segments - 1][i - 1]) % MOD;
+
+                dp[segments][i] =
+                    (dp[segments][i - 1] + prefix) % MOD;
+            }
+        }
+
+        return (int) dp[k][n - 1];
+    }
+}
